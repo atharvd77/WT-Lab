@@ -1,0 +1,78 @@
+/* ================================================================
+   style.css - Custom Styles
+   Project : Electricity Bill Calculator
+   Purpose : Adds small visual refinements on top of Bootstrap 5
+             (Bootstrap handles the responsive grid/layout; this file
+             only adds branding touches, hover effects, and print styles).
+   ================================================================ */
+
+/* Smooth theme font stack, layered on top of Bootstrap's default */
+body {
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f4f6f9;
+}
+
+/* Header logo icon subtle glow */
+header i.bi-lightning-charge-fill {
+    color: #ffd60a;
+    filter: drop-shadow(0 0 3px rgba(255, 214, 10, 0.6));
+}
+
+/* Card hover lift effect for a more "alive" UI */
+.card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Make the primary "Calculate" button stand out a bit more */
+#calculateBtn {
+    letter-spacing: 0.3px;
+}
+
+/* Highlight box for total bill amount on result.jsp */
+.bg-primary.bg-gradient {
+    background-image: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%) !important;
+}
+
+/* Table header consistency */
+table thead th {
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Footer always sticks to the bottom (paired with flexbox in JSP body) */
+footer {
+    letter-spacing: 0.2px;
+}
+
+/* Invalid field highlighting (used by script.js during validation) */
+.is-invalid-custom {
+    border-color: #dc3545 !important;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+}
+
+/* Responsive tweak: tighten padding on very small screens */
+@media (max-width: 400px) {
+    .card-body {
+        padding: 1.25rem !important;
+    }
+
+    .display-6 {
+        font-size: 1.75rem;
+    }
+}
+
+/* Print-friendly styles for the "Print Bill" button on result.jsp */
+@media print {
+    header, footer, .btn, #resetBtn, #calculateBtn {
+        display: none !important;
+    }
+
+    .card {
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+    }
+}
