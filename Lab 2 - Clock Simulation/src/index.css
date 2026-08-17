@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- Theme tokens ---------- */
+:root,
+[data-theme='dark'] {
+  --surface: #14161c;
+  --surface-raised: #1b1e26;
+  --surface-sunken: #0d0f14;
+  --edge: rgba(255, 255, 255, 0.08);
+  --accent: #c98a4b;
+  --accent-soft: rgba(201, 138, 75, 0.28);
+  --ink: #f2ede4;
+  --ink-dim: #a9a49c;
+  --ink-faint: #6b6862;
+}
+
+[data-theme='light'] {
+  --surface: #f6f2ea;
+  --surface-raised: #ffffff;
+  --surface-sunken: #ece5d7;
+  --edge: rgba(30, 25, 15, 0.1);
+  --accent: #a85f2e;
+  --accent-soft: rgba(168, 95, 46, 0.18);
+  --ink: #241f18;
+  --ink-dim: #5c554a;
+  --ink-faint: #948c7e;
+}
+
+[data-theme='cyberpunk'] {
+  --surface: #0a0714;
+  --surface-raised: #130f24;
+  --surface-sunken: #06040d;
+  --edge: rgba(0, 255, 225, 0.18);
+  --accent: #ff2bd6;
+  --accent-soft: rgba(0, 255, 225, 0.28);
+  --ink: #e9f8ff;
+  --ink-dim: #8fa8c9;
+  --ink-faint: #4d5a78;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--surface);
+  color: var(--ink);
+  font-family: 'Space Grotesk', sans-serif;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+[data-theme='cyberpunk'] body {
+  background-image: radial-gradient(circle at 15% 10%, rgba(255, 43, 214, 0.08), transparent 40%),
+    radial-gradient(circle at 85% 85%, rgba(0, 255, 225, 0.08), transparent 45%);
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--surface);
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--edge);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-soft);
+}
+
+/* Focus visibility for a11y */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* LED-style digital readout */
+.led-text {
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.06em;
+}
+
+[data-theme='cyberpunk'] .neon-text {
+  text-shadow: 0 0 6px var(--accent), 0 0 18px var(--accent);
+}
+
+.card-edge {
+  border: 1px solid var(--edge);
+}
