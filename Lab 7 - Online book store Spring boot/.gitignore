@@ -1,0 +1,5 @@
+server/.env
+server/target/
+client/node_modules/
+client/dist/
+*.zip
